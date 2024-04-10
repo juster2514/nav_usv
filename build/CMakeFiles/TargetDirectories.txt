@@ -68,6 +68,7 @@
 /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/nav_core_generate_messages.dir
 /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_sbus_channels_msg.dir
 /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.dir
+/home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir
 /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir
 /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/nav_core_gencpp.dir
 /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/nav_core_generate_messages_eus.dir

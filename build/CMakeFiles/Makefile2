@@ -180,6 +180,7 @@ nav_core/clean: nav_core/CMakeFiles/actionlib_msgs_generate_messages_py.dir/clea
 nav_core/clean: nav_core/CMakeFiles/nav_core_generate_messages.dir/clean
 nav_core/clean: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_sbus_channels_msg.dir/clean
 nav_core/clean: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.dir/clean
+nav_core/clean: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/clean
 nav_core/clean: nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/clean
 nav_core/clean: nav_core/CMakeFiles/nav_core_gencpp.dir/clean
 nav_core/clean: nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/clean
@@ -1233,7 +1234,7 @@ nav_core/CMakeFiles/nav_core_generate_messages.dir/all: nav_core/CMakeFiles/nav_
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 17
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages.dir/rule
@@ -1300,20 +1301,48 @@ nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.di
 .PHONY : nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.dir/clean
 
 #=============================================================================
+# Target rules for target nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir
+
+# All Build rule for target.
+nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/all:
+	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build.make nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/depend
+	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build.make nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num= "Built target _nav_core_generate_messages_check_deps_pos_vel_att_msg"
+.PHONY : nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/all
+
+# Build rule for subdir invocation for target.
+nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
+.PHONY : nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/rule
+
+# Convenience name for target.
+_nav_core_generate_messages_check_deps_pos_vel_att_msg: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/rule
+.PHONY : _nav_core_generate_messages_check_deps_pos_vel_att_msg
+
+# clean rule for target.
+nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/clean:
+	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build.make nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/clean
+.PHONY : nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/clean
+
+#=============================================================================
 # Target rules for target nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir
 
 # All Build rule for target.
 nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/all: nav_core/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/all: nav_core/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_sbus_channels_msg.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/all
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=21,22 "Built target nav_core_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=21,22,23 "Built target nav_core_generate_messages_cpp"
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/rule
@@ -1339,7 +1368,7 @@ nav_core/CMakeFiles/nav_core_gencpp.dir/all: nav_core/CMakeFiles/nav_core_genera
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_gencpp.dir/rule
@@ -1358,16 +1387,18 @@ nav_core/CMakeFiles/nav_core_gencpp.dir/clean:
 
 # All Build rule for target.
 nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/all: nav_core/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/all: nav_core/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_sbus_channels_msg.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/all
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=23,24,25 "Built target nav_core_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=24,25,26,27 "Built target nav_core_generate_messages_eus"
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_eus.dir/rule
@@ -1393,7 +1424,7 @@ nav_core/CMakeFiles/nav_core_geneus.dir/all: nav_core/CMakeFiles/nav_core_genera
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_geneus.dir/rule
@@ -1412,16 +1443,18 @@ nav_core/CMakeFiles/nav_core_geneus.dir/clean:
 
 # All Build rule for target.
 nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/all: nav_core/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/all: nav_core/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_sbus_channels_msg.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/all
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=26,27 "Built target nav_core_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=28,29,30 "Built target nav_core_generate_messages_lisp"
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/rule
@@ -1447,7 +1480,7 @@ nav_core/CMakeFiles/nav_core_genlisp.dir/all: nav_core/CMakeFiles/nav_core_gener
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_genlisp.dir/rule
@@ -1466,16 +1499,18 @@ nav_core/CMakeFiles/nav_core_genlisp.dir/clean:
 
 # All Build rule for target.
 nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/all: nav_core/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/all: nav_core/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_sbus_channels_msg.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/all
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=28,29 "Built target nav_core_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=31,32,33 "Built target nav_core_generate_messages_nodejs"
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_nodejs.dir/rule
@@ -1501,7 +1536,7 @@ nav_core/CMakeFiles/nav_core_gennodejs.dir/all: nav_core/CMakeFiles/nav_core_gen
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_gennodejs.dir/rule
@@ -1520,16 +1555,18 @@ nav_core/CMakeFiles/nav_core_gennodejs.dir/clean:
 
 # All Build rule for target.
 nav_core/CMakeFiles/nav_core_generate_messages_py.dir/all: nav_core/CMakeFiles/std_msgs_generate_messages_py.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_py.dir/all: nav_core/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_py.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_sbus_channels_msg.dir/all
 nav_core/CMakeFiles/nav_core_generate_messages_py.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_remote_control_msg.dir/all
+nav_core/CMakeFiles/nav_core_generate_messages_py.dir/all: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/all
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_py.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_py.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_core_generate_messages_py.dir/build.make nav_core/CMakeFiles/nav_core_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=30,31,32 "Built target nav_core_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=34,35,36,37 "Built target nav_core_generate_messages_py"
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_py.dir/rule
@@ -1555,7 +1592,7 @@ nav_core/CMakeFiles/nav_core_genpy.dir/all: nav_core/CMakeFiles/nav_core_generat
 
 # Build rule for subdir invocation for target.
 nav_core/CMakeFiles/nav_core_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ljj/Nav_USV_ws/build/CMakeFiles 0
 .PHONY : nav_core/CMakeFiles/nav_core_genpy.dir/rule
@@ -1576,7 +1613,7 @@ nav_core/CMakeFiles/nav_core_genpy.dir/clean:
 nav_core/CMakeFiles/remote_data_node.dir/all: nav_core/CMakeFiles/remote_data_node_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/remote_data_node.dir/build.make nav_core/CMakeFiles/remote_data_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/remote_data_node.dir/build.make nav_core/CMakeFiles/remote_data_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=38,39,40,41,42,43 "Built target remote_data_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=43,44,45,46,47,48 "Built target remote_data_node"
 .PHONY : nav_core/CMakeFiles/remote_data_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1602,7 +1639,7 @@ nav_core/CMakeFiles/remote_data_node.dir/clean:
 nav_core/CMakeFiles/sbus_simulate_node.dir/all: nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/sbus_simulate_node.dir/build.make nav_core/CMakeFiles/sbus_simulate_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/sbus_simulate_node.dir/build.make nav_core/CMakeFiles/sbus_simulate_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=45,46,47,48,49,50 "Built target sbus_simulate_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=50,51,52,53,54,55 "Built target sbus_simulate_node"
 .PHONY : nav_core/CMakeFiles/sbus_simulate_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1680,7 +1717,7 @@ nav_core/CMakeFiles/ekf_nav_update_node.dir/clean:
 nav_core/CMakeFiles/nav_usv_core_control_node.dir/all: nav_core/CMakeFiles/nav_usv_core_control_node_autogen.dir/all
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_usv_core_control_node.dir/build.make nav_core/CMakeFiles/nav_usv_core_control_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_usv_core_control_node.dir/build.make nav_core/CMakeFiles/nav_usv_core_control_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=33,34,35,36 "Built target nav_usv_core_control_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=38,39,40,41 "Built target nav_usv_core_control_node"
 .PHONY : nav_core/CMakeFiles/nav_usv_core_control_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1706,7 +1743,7 @@ nav_core/CMakeFiles/nav_usv_core_control_node.dir/clean:
 nav_core/CMakeFiles/remote_data_node_autogen.dir/all:
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/remote_data_node_autogen.dir/build.make nav_core/CMakeFiles/remote_data_node_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/remote_data_node_autogen.dir/build.make nav_core/CMakeFiles/remote_data_node_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=44 "Built target remote_data_node_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=49 "Built target remote_data_node_autogen"
 .PHONY : nav_core/CMakeFiles/remote_data_node_autogen.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1732,7 +1769,7 @@ nav_core/CMakeFiles/remote_data_node_autogen.dir/clean:
 nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/all:
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/build.make nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/build.make nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=51 "Built target sbus_simulate_node_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=56 "Built target sbus_simulate_node_autogen"
 .PHONY : nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1810,7 +1847,7 @@ nav_core/CMakeFiles/ekf_nav_update_node_autogen.dir/clean:
 nav_core/CMakeFiles/nav_usv_core_control_node_autogen.dir/all:
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_usv_core_control_node_autogen.dir/build.make nav_core/CMakeFiles/nav_usv_core_control_node_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/nav_usv_core_control_node_autogen.dir/build.make nav_core/CMakeFiles/nav_usv_core_control_node_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=37 "Built target nav_usv_core_control_node_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=42 "Built target nav_usv_core_control_node_autogen"
 .PHONY : nav_core/CMakeFiles/nav_usv_core_control_node_autogen.dir/all
 
 # Build rule for subdir invocation for target.

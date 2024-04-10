@@ -54,6 +54,7 @@ class EKFImuGnss{
     ros::Subscriber sub_imu_data_;
     ros::Subscriber sub_gps_data_;
     ros::Publisher  pub_path_;
+    ros::Publisher  run_status_;
 
     EKFOption options_;
 

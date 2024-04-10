@@ -6,5 +6,5 @@ CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKA
 
 CXX_INCLUDES = -I/home/ljj/Nav_USV_ws/build/nav_core -I/home/ljj/Nav_USV_ws/src/nav_core -I/home/ljj/Nav_USV_ws/build/nav_core/ekf_nav_update_node_autogen/include -I/home/ljj/Nav_USV_ws/devel/include -I/home/ljj/Nav_USV_ws/install/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/home/ljj/Nav_USV_ws/src/nav_core/./include -I/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp/../../../../../include
 
-CXX_FLAGS = -g -std=gnu++17
+CXX_FLAGS = -std=gnu++17
 

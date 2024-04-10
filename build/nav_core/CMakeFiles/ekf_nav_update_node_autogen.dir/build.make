@@ -68,7 +68,7 @@ include nav_core/CMakeFiles/ekf_nav_update_node_autogen.dir/progress.make
 
 nav_core/CMakeFiles/ekf_nav_update_node_autogen:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target ekf_nav_update_node"
-	cd /home/ljj/Nav_USV_ws/build/nav_core && /usr/local/bin/cmake -E cmake_autogen /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/ekf_nav_update_node_autogen.dir/AutogenInfo.json Debug
+	cd /home/ljj/Nav_USV_ws/build/nav_core && /usr/local/bin/cmake -E cmake_autogen /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/ekf_nav_update_node_autogen.dir/AutogenInfo.json ""
 
 ekf_nav_update_node_autogen: nav_core/CMakeFiles/ekf_nav_update_node_autogen
 ekf_nav_update_node_autogen: nav_core/CMakeFiles/ekf_nav_update_node_autogen.dir/build.make

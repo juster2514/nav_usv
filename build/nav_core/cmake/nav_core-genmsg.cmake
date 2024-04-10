@@ -1,8 +1,8 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "nav_core: 2 messages, 0 services")
+message(STATUS "nav_core: 3 messages, 0 services")
 
-set(MSG_I_FLAGS "-Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -27,6 +27,11 @@ add_custom_target(_nav_core_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "nav_core" "/home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg" "std_msgs/Header"
 )
 
+get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg" NAME_WE)
+add_custom_target(_nav_core_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "nav_core" "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg" "geometry_msgs/Point:geometry_msgs/Vector3:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/PoseStamped:geometry_msgs/Quaternion"
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
@@ -43,6 +48,12 @@ _generate_msg_cpp(nav_core
   "/home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/nav_core
+)
+_generate_msg_cpp(nav_core
+  "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/nav_core
 )
 
@@ -63,6 +74,8 @@ add_dependencies(nav_core_generate_messages nav_core_generate_messages_cpp)
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_cpp _nav_core_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg" NAME_WE)
+add_dependencies(nav_core_generate_messages_cpp _nav_core_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_cpp _nav_core_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -86,6 +99,12 @@ _generate_msg_eus(nav_core
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/nav_core
 )
+_generate_msg_eus(nav_core
+  "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/nav_core
+)
 
 ### Generating Services
 
@@ -104,6 +123,8 @@ add_dependencies(nav_core_generate_messages nav_core_generate_messages_eus)
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_eus _nav_core_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg" NAME_WE)
+add_dependencies(nav_core_generate_messages_eus _nav_core_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_eus _nav_core_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -127,6 +148,12 @@ _generate_msg_lisp(nav_core
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/nav_core
 )
+_generate_msg_lisp(nav_core
+  "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/nav_core
+)
 
 ### Generating Services
 
@@ -145,6 +172,8 @@ add_dependencies(nav_core_generate_messages nav_core_generate_messages_lisp)
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_lisp _nav_core_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg" NAME_WE)
+add_dependencies(nav_core_generate_messages_lisp _nav_core_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_lisp _nav_core_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -168,6 +197,12 @@ _generate_msg_nodejs(nav_core
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/nav_core
 )
+_generate_msg_nodejs(nav_core
+  "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/nav_core
+)
 
 ### Generating Services
 
@@ -186,6 +221,8 @@ add_dependencies(nav_core_generate_messages nav_core_generate_messages_nodejs)
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_nodejs _nav_core_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg" NAME_WE)
+add_dependencies(nav_core_generate_messages_nodejs _nav_core_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_nodejs _nav_core_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -209,6 +246,12 @@ _generate_msg_py(nav_core
   "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/nav_core
 )
+_generate_msg_py(nav_core
+  "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Vector3.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/nav_core
+)
 
 ### Generating Services
 
@@ -227,6 +270,8 @@ add_dependencies(nav_core_generate_messages nav_core_generate_messages_py)
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_py _nav_core_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg" NAME_WE)
+add_dependencies(nav_core_generate_messages_py _nav_core_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg" NAME_WE)
 add_dependencies(nav_core_generate_messages_py _nav_core_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -248,6 +293,9 @@ endif()
 if(TARGET std_msgs_generate_messages_cpp)
   add_dependencies(nav_core_generate_messages_cpp std_msgs_generate_messages_cpp)
 endif()
+if(TARGET geometry_msgs_generate_messages_cpp)
+  add_dependencies(nav_core_generate_messages_cpp geometry_msgs_generate_messages_cpp)
+endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/nav_core)
   # install generated code
@@ -258,6 +306,9 @@ if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/na
 endif()
 if(TARGET std_msgs_generate_messages_eus)
   add_dependencies(nav_core_generate_messages_eus std_msgs_generate_messages_eus)
+endif()
+if(TARGET geometry_msgs_generate_messages_eus)
+  add_dependencies(nav_core_generate_messages_eus geometry_msgs_generate_messages_eus)
 endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/nav_core)
@@ -270,6 +321,9 @@ endif()
 if(TARGET std_msgs_generate_messages_lisp)
   add_dependencies(nav_core_generate_messages_lisp std_msgs_generate_messages_lisp)
 endif()
+if(TARGET geometry_msgs_generate_messages_lisp)
+  add_dependencies(nav_core_generate_messages_lisp geometry_msgs_generate_messages_lisp)
+endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/nav_core)
   # install generated code
@@ -280,6 +334,9 @@ if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_D
 endif()
 if(TARGET std_msgs_generate_messages_nodejs)
   add_dependencies(nav_core_generate_messages_nodejs std_msgs_generate_messages_nodejs)
+endif()
+if(TARGET geometry_msgs_generate_messages_nodejs)
+  add_dependencies(nav_core_generate_messages_nodejs geometry_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/nav_core)
@@ -292,4 +349,7 @@ if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/nav_
 endif()
 if(TARGET std_msgs_generate_messages_py)
   add_dependencies(nav_core_generate_messages_py std_msgs_generate_messages_py)
+endif()
+if(TARGET geometry_msgs_generate_messages_py)
+  add_dependencies(nav_core_generate_messages_py geometry_msgs_generate_messages_py)
 endif()

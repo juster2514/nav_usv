@@ -145,6 +145,7 @@
 		"/opt/ros/noetic/share/genmsg/cmake/pkg-msg-extras.cmake.in",
 		"/home/ljj/Nav_USV_ws/devel/share/nav_core/cmake/nav_core-msg-paths.cmake",
 		"/opt/ros/noetic/share/std_msgs/cmake/std_msgs-msg-paths.cmake",
+		"/opt/ros/noetic/share/geometry_msgs/cmake/geometry_msgs-msg-paths.cmake",
 		"/opt/ros/noetic/share/genmsg/cmake/pkg-genmsg.context.in",
 		"/opt/ros/noetic/share/genmsg/cmake/pkg-genmsg.cmake.em",
 		"/home/ljj/Nav_USV_ws/build/nav_core/cmake/nav_core-genmsg.cmake",
@@ -182,6 +183,7 @@
 	[
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
+		"QT_NO_DEBUG",
 		"QT_SERIALPORT_LIB",
 		"QT_WIDGETS_LIB",
 		"ROSCONSOLE_BACKEND_LOG4CXX",

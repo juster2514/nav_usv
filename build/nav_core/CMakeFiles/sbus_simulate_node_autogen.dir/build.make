@@ -68,7 +68,7 @@ include nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/progress.make
 
 nav_core/CMakeFiles/sbus_simulate_node_autogen:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target sbus_simulate_node"
-	cd /home/ljj/Nav_USV_ws/build/nav_core && /usr/local/bin/cmake -E cmake_autogen /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/AutogenInfo.json Debug
+	cd /home/ljj/Nav_USV_ws/build/nav_core && /usr/local/bin/cmake -E cmake_autogen /home/ljj/Nav_USV_ws/build/nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/AutogenInfo.json ""
 
 sbus_simulate_node_autogen: nav_core/CMakeFiles/sbus_simulate_node_autogen
 sbus_simulate_node_autogen: nav_core/CMakeFiles/sbus_simulate_node_autogen.dir/build.make

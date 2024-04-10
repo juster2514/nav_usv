@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp"
   "/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/remote_control_msg.lisp"
   "/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/sbus_channels_msg.lisp"
   "CMakeFiles/nav_core_generate_messages_lisp"

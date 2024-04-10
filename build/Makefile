@@ -718,6 +718,19 @@ _nav_core_generate_messages_check_deps_remote_control_msg/fast:
 .PHONY : _nav_core_generate_messages_check_deps_remote_control_msg/fast
 
 #=============================================================================
+# Target rules for targets named _nav_core_generate_messages_check_deps_pos_vel_att_msg
+
+# Build rule for target.
+_nav_core_generate_messages_check_deps_pos_vel_att_msg: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _nav_core_generate_messages_check_deps_pos_vel_att_msg
+.PHONY : _nav_core_generate_messages_check_deps_pos_vel_att_msg
+
+# fast build rule for target.
+_nav_core_generate_messages_check_deps_pos_vel_att_msg/fast:
+	$(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build.make nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build
+.PHONY : _nav_core_generate_messages_check_deps_pos_vel_att_msg/fast
+
+#=============================================================================
 # Target rules for targets named nav_core_generate_messages_cpp
 
 # Build rule for target.
@@ -990,6 +1003,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... _nav_core_generate_messages_check_deps_pos_vel_att_msg"
 	@echo "... _nav_core_generate_messages_check_deps_remote_control_msg"
 	@echo "... _nav_core_generate_messages_check_deps_sbus_channels_msg"
 	@echo "... actionlib_msgs_generate_messages_cpp"

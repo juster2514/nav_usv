@@ -68,20 +68,33 @@ include nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/progress.make
 
 nav_core/CMakeFiles/nav_core_generate_messages_lisp: /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/sbus_channels_msg.lisp
 nav_core/CMakeFiles/nav_core_generate_messages_lisp: /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/remote_control_msg.lisp
+nav_core/CMakeFiles/nav_core_generate_messages_lisp: /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp
+
+/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
+/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp: /home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg
+/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
+/home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from nav_core/pos_vel_att_msg.msg"
+	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg
 
 /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/remote_control_msg.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/remote_control_msg.lisp: /home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg
 /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/remote_control_msg.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from nav_core/remote_control_msg.msg"
-	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from nav_core/remote_control_msg.msg"
+	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg
 
 /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/sbus_channels_msg.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/sbus_channels_msg.lisp: /home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg
 /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/sbus_channels_msg.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from nav_core/sbus_channels_msg.msg"
-	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Lisp code from nav_core/sbus_channels_msg.msg"
+	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg
 
 nav_core_generate_messages_lisp: nav_core/CMakeFiles/nav_core_generate_messages_lisp
+nav_core_generate_messages_lisp: /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/pos_vel_att_msg.lisp
 nav_core_generate_messages_lisp: /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/remote_control_msg.lisp
 nav_core_generate_messages_lisp: /home/ljj/Nav_USV_ws/devel/share/common-lisp/ros/nav_core/msg/sbus_channels_msg.lisp
 nav_core_generate_messages_lisp: nav_core/CMakeFiles/nav_core_generate_messages_lisp.dir/build.make

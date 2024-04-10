@@ -11,7 +11,7 @@ initaccscale: [ 0, 0, 0]
 
 initposstd: [ 0.0, 0.0, 0.0]
 initvelstd: [ 0.0, 0.0, 0.0]
-initattstd: [ 0.0, 0.0, 0.0 ]
+initattstd: [ 0.0, 0.0, 0.0]
 
 imunoise:
   arw: [0.24, 0.24, 0.24]          # [deg/sqrt(hr)]

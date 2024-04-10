@@ -634,6 +634,20 @@ _nav_core_generate_messages_check_deps_remote_control_msg/fast:
 .PHONY : _nav_core_generate_messages_check_deps_remote_control_msg/fast
 
 # Convenience name for target.
+nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/rule:
+	cd /home/ljj/Nav_USV_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/rule
+.PHONY : nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/rule
+
+# Convenience name for target.
+_nav_core_generate_messages_check_deps_pos_vel_att_msg: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/rule
+.PHONY : _nav_core_generate_messages_check_deps_pos_vel_att_msg
+
+# fast build rule for target.
+_nav_core_generate_messages_check_deps_pos_vel_att_msg/fast:
+	cd /home/ljj/Nav_USV_ws/build && $(MAKE) $(MAKESILENT) -f nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build.make nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build
+.PHONY : _nav_core_generate_messages_check_deps_pos_vel_att_msg/fast
+
+# Convenience name for target.
 nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/rule:
 	cd /home/ljj/Nav_USV_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/rule
 .PHONY : nav_core/CMakeFiles/nav_core_generate_messages_cpp.dir/rule
@@ -1358,6 +1372,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... _nav_core_generate_messages_check_deps_pos_vel_att_msg"
 	@echo "... _nav_core_generate_messages_check_deps_remote_control_msg"
 	@echo "... _nav_core_generate_messages_check_deps_sbus_channels_msg"
 	@echo "... actionlib_msgs_generate_messages_cpp"

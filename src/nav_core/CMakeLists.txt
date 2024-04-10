@@ -30,11 +30,13 @@ add_message_files(
   FILES
   sbus_channels_msg.msg
   remote_control_msg.msg
+  pos_vel_att_msg.msg
 )
 
 generate_messages(
   DEPENDENCIES
   std_msgs
+  geometry_msgs
 )
 
 catkin_package(

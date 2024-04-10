@@ -1,9 +1,11 @@
 #include "nav_core/NavUSVcontrol.hpp"
 #include "nav_core/remote_control_msg.h"
+#include "nav_core/pos_vel_att_msg.h"
 
 NavUSVcontrol::NavUSVcontrol():nh_("~"){
     pub_sbus_channels_value_ =nh_.advertise<nav_core::sbus_channels_msg>("sbus_channel_values", 10);
     sub_remote_ctrl_ = nh_.subscribe<nav_core::remote_control_msg>("/remote_data_node/remote_ctrl_data",10,&NavUSVcontrol::RemoteCallback,this);
+    path_statue_ = nh_.subscribe<nav_core::pos_vel_att_msg>("/ekf_nav_update_node/run_status_data",10,&NavUSVcontrol::PathPlan,this);
 }
 
 void NavUSVcontrol::RemoteCallback(const nav_core::remote_control_msg::ConstPtr & msg){
@@ -25,4 +27,12 @@ void NavUSVcontrol::RemoteCallback(const nav_core::remote_control_msg::ConstPtr 
 void NavUSVcontrol::CheckChvalue(int16_t &ch){
     if (ch >=2000)ch = 2000;
     else if (ch <=1000)ch = 1000;
+}
+
+void NavUSVcontrol::PathPlan(const nav_core::pos_vel_att_msg::ConstPtr &msg){
+    double x,y,distance,angle;
+    x=position_first.pose.position.x-msg->pos.pose.position.x;
+    y=position_first.pose.position.y-msg->pos.pose.position.y;
+    distance = sqrt(pow(x,2)+pow(y,2));
+    angle = atan2(y,x);
 }

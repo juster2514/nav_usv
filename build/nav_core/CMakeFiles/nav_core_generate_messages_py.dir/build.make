@@ -68,28 +68,42 @@ include nav_core/CMakeFiles/nav_core_generate_messages_py.dir/progress.make
 
 nav_core/CMakeFiles/nav_core_generate_messages_py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_sbus_channels_msg.py
 nav_core/CMakeFiles/nav_core_generate_messages_py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_remote_control_msg.py
+nav_core/CMakeFiles/nav_core_generate_messages_py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py
 nav_core/CMakeFiles/nav_core_generate_messages_py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/__init__.py
 
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/__init__.py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_sbus_channels_msg.py
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/__init__.py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_remote_control_msg.py
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/__init__.py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python msg __init__.py for nav_core"
 	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg --initpy
+
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py: /home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py: /opt/ros/noetic/share/geometry_msgs/msg/Vector3.msg
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py: /opt/ros/noetic/share/geometry_msgs/msg/Pose.msg
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py: /opt/ros/noetic/share/geometry_msgs/msg/PoseStamped.msg
+/home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py: /opt/ros/noetic/share/geometry_msgs/msg/Quaternion.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG nav_core/pos_vel_att_msg"
+	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg
 
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_remote_control_msg.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_remote_control_msg.py: /home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_remote_control_msg.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG nav_core/remote_control_msg"
-	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG nav_core/remote_control_msg"
+	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ljj/Nav_USV_ws/src/nav_core/msg/remote_control_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg
 
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_sbus_channels_msg.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_sbus_channels_msg.py: /home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg
 /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_sbus_channels_msg.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG nav_core/sbus_channels_msg"
-	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ljj/Nav_USV_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG nav_core/sbus_channels_msg"
+	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/ljj/Nav_USV_ws/src/nav_core/msg/sbus_channels_msg.msg -Inav_core:/home/ljj/Nav_USV_ws/src/nav_core/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p nav_core -o /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg
 
 nav_core_generate_messages_py: nav_core/CMakeFiles/nav_core_generate_messages_py
 nav_core_generate_messages_py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/__init__.py
+nav_core_generate_messages_py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_pos_vel_att_msg.py
 nav_core_generate_messages_py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_remote_control_msg.py
 nav_core_generate_messages_py: /home/ljj/Nav_USV_ws/devel/lib/python3/dist-packages/nav_core/msg/_sbus_channels_msg.py
 nav_core_generate_messages_py: nav_core/CMakeFiles/nav_core_generate_messages_py.dir/build.make
