@@ -62,7 +62,9 @@ void NavUSVcontrol::PathPlan(const nav_core::pos_vel_att_msg::ConstPtr &msg){
 }
 
 void NavUSVcontrol::SbusAutoOutput(double Vl_,double Vr_){
-    
+    sbus_output_data.channels_value[0]=Vl_;
+    sbus_output_data.channels_value[1]=Vr_;
+    pub_sbus_channels_value_.publish(sbus_output_data);
 }
 
 void NavUSVcontrol::OutsideControl(){
