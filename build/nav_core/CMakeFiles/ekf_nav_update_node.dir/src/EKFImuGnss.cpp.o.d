@@ -1374,17 +1374,18 @@ nav_core/CMakeFiles/ekf_nav_update_node.dir/src/EKFImuGnss.cpp.o: \
  /opt/ros/noetic/include/ros/this_node.h \
  /opt/ros/noetic/include/ros/param.h /opt/ros/noetic/include/ros/topic.h \
  /opt/ros/noetic/include/ros/node_handle.h \
- /opt/ros/noetic/include/sensor_msgs/Imu.h \
+ /home/ljj/Nav_USV_ws/devel/include/nav_core/pos_vel_att_msg.h \
  /opt/ros/noetic/include/ros/message_operations.h \
  /opt/ros/noetic/include/std_msgs/Header.h \
- /opt/ros/noetic/include/geometry_msgs/Quaternion.h \
- /opt/ros/noetic/include/geometry_msgs/Vector3.h \
- /opt/ros/noetic/include/sensor_msgs/NavSatFix.h \
- /opt/ros/noetic/include/sensor_msgs/NavSatStatus.h \
- /opt/ros/noetic/include/nav_msgs/Path.h \
  /opt/ros/noetic/include/geometry_msgs/PoseStamped.h \
  /opt/ros/noetic/include/geometry_msgs/Pose.h \
  /opt/ros/noetic/include/geometry_msgs/Point.h \
+ /opt/ros/noetic/include/geometry_msgs/Quaternion.h \
+ /opt/ros/noetic/include/geometry_msgs/Vector3.h \
+ /opt/ros/noetic/include/sensor_msgs/Imu.h \
+ /opt/ros/noetic/include/sensor_msgs/NavSatFix.h \
+ /opt/ros/noetic/include/sensor_msgs/NavSatStatus.h \
+ /opt/ros/noetic/include/nav_msgs/Path.h \
  /home/ljj/Nav_USV_ws/src/nav_core/./include/kf_gins/InsMech.hpp \
  /home/ljj/Nav_USV_ws/src/nav_core/./include/kf_gins/EKF_types.hpp \
  /home/ljj/Nav_USV_ws/src/nav_core/./include/kf_gins/earth.hpp \

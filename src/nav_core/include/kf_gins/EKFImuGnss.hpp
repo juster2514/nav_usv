@@ -5,6 +5,8 @@
 #include "EKF_types.hpp"
 #include <ros/ros.h>
 
+#include "nav_core/pos_vel_att_msg.h"
+
 #include <sensor_msgs/Imu.h>
 #include <sensor_msgs/NavSatFix.h>
 #include <nav_msgs/Path.h>
@@ -62,6 +64,7 @@ class EKFImuGnss{
     IMU imucurrent_;
     GNSS gnssdata_;
 
+    nav_core::pos_vel_att_msg run_statue_msg;
     geometry_msgs::PoseStamped pos_msg;
     nav_msgs::Path path_msg;
 

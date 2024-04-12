@@ -67,7 +67,7 @@ include nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_m
 include nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/progress.make
 
 nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg:
-	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py nav_core /home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg geometry_msgs/Point:geometry_msgs/Vector3:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/PoseStamped:geometry_msgs/Quaternion
+	cd /home/ljj/Nav_USV_ws/build/nav_core && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py nav_core /home/ljj/Nav_USV_ws/src/nav_core/msg/pos_vel_att_msg.msg geometry_msgs/Pose:std_msgs/Header:geometry_msgs/Point:geometry_msgs/Quaternion:geometry_msgs/PoseStamped:geometry_msgs/Vector3
 
 _nav_core_generate_messages_check_deps_pos_vel_att_msg: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg
 _nav_core_generate_messages_check_deps_pos_vel_att_msg: nav_core/CMakeFiles/_nav_core_generate_messages_check_deps_pos_vel_att_msg.dir/build.make

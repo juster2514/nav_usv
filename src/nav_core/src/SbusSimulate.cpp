@@ -12,8 +12,7 @@
 */
 SbusSimulateSerial::SbusSimulateSerial() : nh_("~") {
   sbus_simulate_ser_ = std::make_shared<QSerialPort>();
-  InitSbusSimulateSerialPort(
-      "/dev/ttyUSB1");
+  InitSbusSimulateSerialPort("/dev/ttyUSB1");
   sub_sbus_channels_value_ = nh_.subscribe<nav_core::sbus_channels_msg>(
       "/nav_usv_core_control_node/sbus_channel_values", 100, &SbusSimulateSerial::SubSbusNewChannelsValueCallback, this);
   SbusOutputThread();

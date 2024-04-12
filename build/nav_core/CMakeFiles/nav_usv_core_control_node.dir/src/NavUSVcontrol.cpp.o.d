@@ -641,11 +641,13 @@ nav_core/CMakeFiles/nav_usv_core_control_node.dir/src/NavUSVcontrol.cpp.o: \
  /opt/ros/noetic/include/ros/message_operations.h \
  /opt/ros/noetic/include/std_msgs/Header.h \
  /home/ljj/Nav_USV_ws/devel/include/nav_core/remote_control_msg.h \
- /opt/ros/noetic/include/nav_msgs/Path.h \
+ /home/ljj/Nav_USV_ws/devel/include/nav_core/pos_vel_att_msg.h \
  /opt/ros/noetic/include/geometry_msgs/PoseStamped.h \
  /opt/ros/noetic/include/geometry_msgs/Pose.h \
  /opt/ros/noetic/include/geometry_msgs/Point.h \
  /opt/ros/noetic/include/geometry_msgs/Quaternion.h \
+ /opt/ros/noetic/include/geometry_msgs/Vector3.h \
+ /opt/ros/noetic/include/nav_msgs/Path.h \
  /home/ljj/Nav_USV_ws/src/nav_core/./include/nav_core/SbusSimulate.hpp \
  /usr/include/x86_64-linux-gnu/qt5/QtSerialPort/qserialport.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h \

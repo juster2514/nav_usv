@@ -1,6 +1,7 @@
 #include "kf_gins/EKFImuGnss.hpp"
 #include "kf_gins/InsMech.hpp"
 #include "kf_gins/earth.hpp"
+#include "nav_core/pos_vel_att_msg.h"
 
 
 
@@ -27,6 +28,7 @@ EKFImuGnss::EKFImuGnss(EKFOption &options):nh_("~"){
     sub_imu_data_ = nh_.subscribe<sensor_msgs::Imu>("/imu_gps_node/imu_data",100,&EKFImuGnss::ImuCallback,this);
     sub_gps_data_ = nh_.subscribe<sensor_msgs::NavSatFix>("/imu_gps_node/gps_data",100,&EKFImuGnss::GpsCallback,this);
     pub_path_ =  nh_.advertise<nav_msgs::Path>("nav_path_show",100);
+    run_status_ = nh_.advertise<nav_core::pos_vel_att_msg>("run_status_data",100);
 }
 
 void EKFImuGnss::InitEKFImuGnss(const NavState &initstate, const NavState &initstate_std){
@@ -286,15 +288,29 @@ void EKFImuGnss::PosAtt2Path(){
     pos_msg.pose.position.y = xyz[1]-xyz_pre[1];
     pos_msg.pose.position.z = xyz[2]-xyz_pre[2];
 
+    run_statue_msg.pos.pose.position.x = xyz[0]; 
+    run_statue_msg.pos.pose.position.y = xyz[1]; 
+    run_statue_msg.pos.pose.position.z = xyz[2]; 
+
     pos_msg.pose.orientation.w = pvacurrent_.att.Qbn.w();
     pos_msg.pose.orientation.x = pvacurrent_.att.Qbn.x();
     pos_msg.pose.orientation.y = pvacurrent_.att.Qbn.y();
     pos_msg.pose.orientation.z = pvacurrent_.att.Qbn.z();
 
+    run_statue_msg.pos.pose.orientation = pos_msg.pose.orientation;
+
+    run_statue_msg.vel.x = pvacurrent_.vel[0];
+    run_statue_msg.vel.y = pvacurrent_.vel[1];
+    run_statue_msg.vel.z = pvacurrent_.vel[2];
+
     path_msg.poses.push_back(pos_msg);
     path_msg.header.stamp = ros::Time::now();
     path_msg.header.frame_id = "map";
+    run_statue_msg.header.stamp = ros::Time::now();
+    run_statue_msg.header.frame_id = "run_statue";
+
     pub_path_.publish(path_msg);
+    run_status_.publish(run_statue_msg);
 }
 
 void EKFImuGnss::LLA2XYZ(std::vector<double> &llh,std::vector<double> &xyz)
