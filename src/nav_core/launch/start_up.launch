@@ -1,0 +1,5 @@
+<launch>
+    <node name="nav_usv_core_control_node" pkg="nav_core" type="NavUSVcontrolNode" output="screen"/>
+    <node name="remote_data_node" pkg="nav_core" type="RemoteDataNode" output="screen"/>
+    <node name="sbus_simulate_node" pkg="nav_core" type="SbusSimulateOutputNode" output="screen"/>
+</launch>
