@@ -20,18 +20,15 @@ class RemoteControlDataParser : public QObject {
     RemoteControlDataParser();
     ~RemoteControlDataParser() = default;
     void NodeSpinThread() {
-    ros::spin();
-    ros::shutdown();
+      ros::spin();
+      ros::shutdown();
     }
  public slots:
-  void ReadRemoteControlSerialDataCallback();
+    void ReadRemoteControlSerialDataCallback();
  private:
     void Parser(const QByteArray &sbus_buf,nav_core::remote_control_msg &rc_ctrl);
-    void InitRemoteCtrlSerialport(const std::string port_name)const;
-
-    const int remote_ctrl_baud_rate_{100000};
-    const int remote_ctrl_received_data_len_{18};
-
+    bool InitRemoteCtrlSerialport(const std::string port_name)const;
+    
     std::shared_ptr<QSerialPort> remote_control_serial_;
     ros::Publisher remote_ctrl_msg_pub;
 };

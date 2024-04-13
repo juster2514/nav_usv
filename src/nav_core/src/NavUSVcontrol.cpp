@@ -6,6 +6,11 @@ NavUSVcontrol::NavUSVcontrol():nh_("~"){
     pub_sbus_channels_value_ =nh_.advertise<nav_core::sbus_channels_msg>("sbus_channel_values", 10);
     sub_remote_ctrl_ = nh_.subscribe<nav_core::remote_control_msg>("/remote_data_node/remote_ctrl_data",10,&NavUSVcontrol::RemoteCallback,this);
     path_statue_ = nh_.subscribe<nav_core::pos_vel_att_msg>("/ekf_nav_update_node/run_status_data",10,&NavUSVcontrol::PathPlan,this);
+
+    position_first.pose.position.x = 20;
+    position_first.pose.position.y = 20;
+    position_first.pose.position.z = 0;
+
     std::thread nav_control_thread = std::thread(&NavUSVcontrol::NavNodeThread,this);
     nav_control_thread.detach();
 }
@@ -57,8 +62,9 @@ void NavUSVcontrol::PathPlan(const nav_core::pos_vel_att_msg::ConstPtr &msg){
     angle_error_num = angle_error_num + angle_error;
     OutsideControl();
 
-    Vl = Vc + (Wc*L)/2;
-    Vr = Vc - (Wc*L)/2;
+    Vl = Vc + (Wc*L)/2 +1500;
+    Vr = Vc - (Wc*L)/2 +1500;
+    
 }
 
 void NavUSVcontrol::SbusAutoOutput(double Vl_,double Vr_){

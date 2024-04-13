@@ -288,9 +288,9 @@ void EKFImuGnss::PosAtt2Path(){
     pos_msg.pose.position.y = xyz[1]-xyz_pre[1];
     pos_msg.pose.position.z = xyz[2]-xyz_pre[2];
 
-    run_statue_msg.pos.pose.position.x = xyz[0]; 
-    run_statue_msg.pos.pose.position.y = xyz[1]; 
-    run_statue_msg.pos.pose.position.z = xyz[2]; 
+    run_statue_msg.pos.pose.position.x = xyz[0]-xyz_pre[0]; 
+    run_statue_msg.pos.pose.position.y = xyz[1]-xyz_pre[1]; 
+    run_statue_msg.pos.pose.position.z = xyz[2]-xyz_pre[2]; 
 
     pos_msg.pose.orientation.w = pvacurrent_.att.Qbn.w();
     pos_msg.pose.orientation.x = pvacurrent_.att.Qbn.x();

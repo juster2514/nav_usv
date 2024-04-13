@@ -35,7 +35,7 @@ class NavUSVcontrol{
     double distance,angle_goal,angle_realy;
     double angle_error,angle_error_num,angle_error_pre = 0;
     double Wc,Vc,Vl,Vr,L;
-    double Kpw,Kiw,Kdw,Kpv;
+    double Kpw=1,Kiw=0,Kdw=0.1,Kpv=1;
     bool decision;
 };
 
