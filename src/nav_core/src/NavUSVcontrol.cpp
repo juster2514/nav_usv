@@ -21,14 +21,16 @@ void NavUSVcontrol::RemoteCallback(const nav_core::remote_control_msg::ConstPtr 
         decision = true;
         power = msg->ch_1;
         direction = msg->ch_2;
+        steering_ratio = msg->k;
     }
     else if (msg ->key_value == 1800)decision = false;
 
 }
 
-void NavUSVcontrol::SbusRemoteOutput(int16_t power_,int16_t direction_){
-    power = 1000+(power_-200)/1.6;
-    direction = 1-(direction_-200)/800;
+void NavUSVcontrol::SbusRemoteOutput(){
+    power = 1000+(power-200)*0.625;
+    direction = 1-(direction-200)*0.00125;
+    K = 100 + (steering_ratio -200)*0.25;
 
     ch1 = power + K*direction;
     CheckChvalue(ch1);
@@ -81,7 +83,7 @@ void NavUSVcontrol::OutsideControl(){
 void NavUSVcontrol::NavNodeThread(){
     while (ros::ok)
     {
-        if (decision)SbusRemoteOutput(power,direction);
+        if (decision)SbusRemoteOutput();
         else SbusAutoOutput(Vl,Vr);
         ros::spinOnce();
     }

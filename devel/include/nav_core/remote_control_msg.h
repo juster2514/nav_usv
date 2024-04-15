@@ -28,12 +28,14 @@ struct remote_control_msg_
     : header()
     , ch_1(0)
     , ch_2(0)
+    , k(0)
     , key_value(0)  {
     }
   remote_control_msg_(const ContainerAllocator& _alloc)
     : header(_alloc)
     , ch_1(0)
     , ch_2(0)
+    , k(0)
     , key_value(0)  {
   (void)_alloc;
     }
@@ -48,6 +50,9 @@ struct remote_control_msg_
 
    typedef int16_t _ch_2_type;
   _ch_2_type ch_2;
+
+   typedef int16_t _k_type;
+  _k_type k;
 
    typedef int16_t _key_value_type;
   _key_value_type key_value;
@@ -84,6 +89,7 @@ bool operator==(const ::nav_core::remote_control_msg_<ContainerAllocator1> & lhs
   return lhs.header == rhs.header &&
     lhs.ch_1 == rhs.ch_1 &&
     lhs.ch_2 == rhs.ch_2 &&
+    lhs.k == rhs.k &&
     lhs.key_value == rhs.key_value;
 }
 
@@ -141,12 +147,12 @@ struct MD5Sum< ::nav_core::remote_control_msg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "8c560d5e5383d834df3135169b349720";
+    return "c7ddfb995000097a6c5a0e1e0dd114c0";
   }
 
   static const char* value(const ::nav_core::remote_control_msg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x8c560d5e5383d834ULL;
-  static const uint64_t static_value2 = 0xdf3135169b349720ULL;
+  static const uint64_t static_value1 = 0xc7ddfb995000097aULL;
+  static const uint64_t static_value2 = 0x6c5a0e1e0dd114c0ULL;
 };
 
 template<class ContainerAllocator>
@@ -168,6 +174,7 @@ struct Definition< ::nav_core::remote_control_msg_<ContainerAllocator> >
     return "std_msgs/Header header\n"
 "int16 ch_1\n"
 "int16 ch_2\n"
+"int16 k\n"
 "int16 key_value\n"
 "================================================================================\n"
 "MSG: std_msgs/Header\n"
@@ -205,6 +212,7 @@ namespace serialization
       stream.next(m.header);
       stream.next(m.ch_1);
       stream.next(m.ch_2);
+      stream.next(m.k);
       stream.next(m.key_value);
     }
 
@@ -231,6 +239,8 @@ struct Printer< ::nav_core::remote_control_msg_<ContainerAllocator> >
     Printer<int16_t>::stream(s, indent + "  ", v.ch_1);
     s << indent << "ch_2: ";
     Printer<int16_t>::stream(s, indent + "  ", v.ch_2);
+    s << indent << "k: ";
+    Printer<int16_t>::stream(s, indent + "  ", v.k);
     s << indent << "key_value: ";
     Printer<int16_t>::stream(s, indent + "  ", v.key_value);
   }

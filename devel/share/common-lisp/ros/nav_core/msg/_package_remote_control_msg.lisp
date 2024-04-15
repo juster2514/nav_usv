@@ -5,6 +5,8 @@
           CH_1
           CH_2-VAL
           CH_2
+          K-VAL
+          K
           KEY_VALUE-VAL
           KEY_VALUE
 ))

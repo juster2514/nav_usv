@@ -14,7 +14,7 @@ class NavUSVcontrol{
     NavUSVcontrol();
     ~NavUSVcontrol() = default;
    void RemoteCallback(const nav_core::remote_control_msg::ConstPtr& msg);
-   void SbusRemoteOutput(int16_t power,int16_t direction);
+   void SbusRemoteOutput();
    void SbusAutoOutput(double Vl_,double Vr_);
    void CheckChvalue(int16_t &ch);
    void PathPlan(const nav_core::pos_vel_att_msg::ConstPtr &msg);
@@ -30,6 +30,7 @@ class NavUSVcontrol{
 
     int16_t power,ch1;
     int16_t direction,ch2;
+    int16_t steering_ratio;
     int16_t K=200;
 
     double distance,angle_goal,angle_realy;

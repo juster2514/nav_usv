@@ -22,6 +22,7 @@ class remote_control_msg {
       this.header = null;
       this.ch_1 = null;
       this.ch_2 = null;
+      this.k = null;
       this.key_value = null;
     }
     else {
@@ -43,6 +44,12 @@ class remote_control_msg {
       else {
         this.ch_2 = 0;
       }
+      if (initObj.hasOwnProperty('k')) {
+        this.k = initObj.k
+      }
+      else {
+        this.k = 0;
+      }
       if (initObj.hasOwnProperty('key_value')) {
         this.key_value = initObj.key_value
       }
@@ -60,6 +67,8 @@ class remote_control_msg {
     bufferOffset = _serializer.int16(obj.ch_1, buffer, bufferOffset);
     // Serialize message field [ch_2]
     bufferOffset = _serializer.int16(obj.ch_2, buffer, bufferOffset);
+    // Serialize message field [k]
+    bufferOffset = _serializer.int16(obj.k, buffer, bufferOffset);
     // Serialize message field [key_value]
     bufferOffset = _serializer.int16(obj.key_value, buffer, bufferOffset);
     return bufferOffset;
@@ -75,6 +84,8 @@ class remote_control_msg {
     data.ch_1 = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [ch_2]
     data.ch_2 = _deserializer.int16(buffer, bufferOffset);
+    // Deserialize message field [k]
+    data.k = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [key_value]
     data.key_value = _deserializer.int16(buffer, bufferOffset);
     return data;
@@ -83,7 +94,7 @@ class remote_control_msg {
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 6;
+    return length + 8;
   }
 
   static datatype() {
@@ -93,7 +104,7 @@ class remote_control_msg {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '8c560d5e5383d834df3135169b349720';
+    return 'c7ddfb995000097a6c5a0e1e0dd114c0';
   }
 
   static messageDefinition() {
@@ -102,6 +113,7 @@ class remote_control_msg {
     std_msgs/Header header
     int16 ch_1
     int16 ch_2
+    int16 k
     int16 key_value
     ================================================================================
     MSG: std_msgs/Header
@@ -147,6 +159,13 @@ class remote_control_msg {
     }
     else {
       resolved.ch_2 = 0
+    }
+
+    if (msg.k !== undefined) {
+      resolved.k = msg.k;
+    }
+    else {
+      resolved.k = 0
     }
 
     if (msg.key_value !== undefined) {

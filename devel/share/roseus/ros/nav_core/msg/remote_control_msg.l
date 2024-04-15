@@ -16,7 +16,7 @@
 
 (defclass nav_core::remote_control_msg
   :super ros::object
-  :slots (_header _ch_1 _ch_2 _key_value ))
+  :slots (_header _ch_1 _ch_2 _k _key_value ))
 
 (defmethod nav_core::remote_control_msg
   (:init
@@ -24,12 +24,14 @@
     ((:header __header) (instance std_msgs::Header :init))
     ((:ch_1 __ch_1) 0)
     ((:ch_2 __ch_2) 0)
+    ((:k __k) 0)
     ((:key_value __key_value) 0)
     )
    (send-super :init)
    (setq _header __header)
    (setq _ch_1 (round __ch_1))
    (setq _ch_2 (round __ch_2))
+   (setq _k (round __k))
    (setq _key_value (round __key_value))
    self)
   (:header
@@ -45,6 +47,9 @@
   (:ch_2
    (&optional __ch_2)
    (if __ch_2 (setq _ch_2 __ch_2)) _ch_2)
+  (:k
+   (&optional __k)
+   (if __k (setq _k __k)) _k)
   (:key_value
    (&optional __key_value)
    (if __key_value (setq _key_value __key_value)) _key_value)
@@ -56,6 +61,8 @@
     ;; int16 _ch_1
     2
     ;; int16 _ch_2
+    2
+    ;; int16 _k
     2
     ;; int16 _key_value
     2
@@ -70,6 +77,8 @@
        (write-word _ch_1 s)
      ;; int16 _ch_2
        (write-word _ch_2 s)
+     ;; int16 _k
+       (write-word _k s)
      ;; int16 _key_value
        (write-word _key_value s)
      ;;
@@ -82,18 +91,21 @@
      (setq _ch_1 (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;; int16 _ch_2
      (setq _ch_2 (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; int16 _k
+     (setq _k (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;; int16 _key_value
      (setq _key_value (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;;
    self)
   )
 
-(setf (get nav_core::remote_control_msg :md5sum-) "8c560d5e5383d834df3135169b349720")
+(setf (get nav_core::remote_control_msg :md5sum-) "c7ddfb995000097a6c5a0e1e0dd114c0")
 (setf (get nav_core::remote_control_msg :datatype-) "nav_core/remote_control_msg")
 (setf (get nav_core::remote_control_msg :definition-)
       "std_msgs/Header header
 int16 ch_1
 int16 ch_2
+int16 k
 int16 key_value
 ================================================================================
 MSG: std_msgs/Header
@@ -115,6 +127,6 @@ string frame_id
 
 
 
-(provide :nav_core/remote_control_msg "8c560d5e5383d834df3135169b349720")
+(provide :nav_core/remote_control_msg "c7ddfb995000097a6c5a0e1e0dd114c0")
 
 

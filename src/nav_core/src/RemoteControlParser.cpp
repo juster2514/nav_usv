@@ -74,8 +74,9 @@ void RemoteControlDataParser::ReadRemoteControlSerialDataCallback(){
 */
 void RemoteControlDataParser::Parser(const QByteArray &sbus_buf, nav_core::remote_control_msg &rc_ctrl){
     auto sbus_buf_temp = reinterpret_cast<unsigned char *>(const_cast<char *>(sbus_buf.data()));
-    rc_ctrl.ch_1 = static_cast<int16_t>((sbus_buf_temp[1] | (sbus_buf_temp[2] << 8)) & 0x07ff);               // Channel 1 前进/后退
-    rc_ctrl.ch_2 = static_cast<int16_t>(((sbus_buf_temp[2] >> 3) | (sbus_buf_temp[3] << 5)) & 0x07ff);        // Channel 2 左右转向
-    rc_ctrl.key_value = static_cast<int16_t>(((sbus_buf_temp[6] >> 4) | (sbus_buf_temp[7] << 4)) & 0x07ff);   // 自动/手动模式切换
+    rc_ctrl.ch_1 = static_cast<int16_t>((sbus_buf_temp[1] | (sbus_buf_temp[2] << 8)) & 0x07ff);                      // Channel 1 前进/后退
+    rc_ctrl.ch_2 = static_cast<int16_t>(((sbus_buf_temp[2] >> 3) | (sbus_buf_temp[3] << 5)) & 0x07ff);               // Channel 2 左右转向
+    rc_ctrl.key_value = static_cast<int16_t>(((sbus_buf_temp[6] >> 4) | (sbus_buf_temp[7] << 4)) & 0x07ff);          // 自动/手动模式切换
+    rc_ctrl.k = static_cast<int16_t>(((sbus_buf_temp[7]>>7)|(sbus_buf_temp[8]<<1)|(sbus_buf_temp[9]<<9)) & 0x07ff);  // 转向
 }
 

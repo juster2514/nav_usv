@@ -1,22 +1,22 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/ljj/Nav_USV_ws/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_2d69d/fast && /usr/bin/make  -f CMakeFiles/cmTC_2d69d.dir/build.make CMakeFiles/cmTC_2d69d.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_fc7b6/fast && /usr/bin/make  -f CMakeFiles/cmTC_fc7b6.dir/build.make CMakeFiles/cmTC_fc7b6.dir/build
 make[1]: 进入目录“/home/ljj/Nav_USV_ws/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_2d69d.dir/src.c.o
-/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_2d69d.dir/src.c.o -c /home/ljj/Nav_USV_ws/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_2d69d
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2d69d.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_2d69d.dir/src.c.o -o cmTC_2d69d 
-/usr/bin/ld: CMakeFiles/cmTC_2d69d.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_fc7b6.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_fc7b6.dir/src.c.o -c /home/ljj/Nav_USV_ws/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_fc7b6
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc7b6.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_fc7b6.dir/src.c.o -o cmTC_fc7b6 
+/usr/bin/ld: CMakeFiles/cmTC_fc7b6.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x5e): undefined reference to `pthread_cancel'
 /usr/bin/ld: src.c:(.text+0x6f): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_2d69d.dir/build.make:99：cmTC_2d69d] 错误 1
+make[1]: *** [CMakeFiles/cmTC_fc7b6.dir/build.make:99：cmTC_fc7b6] 错误 1
 make[1]: 离开目录“/home/ljj/Nav_USV_ws/build/CMakeFiles/CMakeTmp”
-make: *** [Makefile:127：cmTC_2d69d/fast] 错误 2
+make: *** [Makefile:127：cmTC_fc7b6/fast] 错误 2
 
 
 Source file was:
@@ -43,18 +43,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/ljj/Nav_USV_ws/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_bb9ab/fast && /usr/bin/make  -f CMakeFiles/cmTC_bb9ab.dir/build.make CMakeFiles/cmTC_bb9ab.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d7878/fast && /usr/bin/make  -f CMakeFiles/cmTC_d7878.dir/build.make CMakeFiles/cmTC_d7878.dir/build
 make[1]: 进入目录“/home/ljj/Nav_USV_ws/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_bb9ab.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_bb9ab.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.22/Modules/CheckFunctionExists.c
-Linking C executable cmTC_bb9ab
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb9ab.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_bb9ab.dir/CheckFunctionExists.c.o -o cmTC_bb9ab  -lpthreads 
+Building C object CMakeFiles/cmTC_d7878.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_d7878.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d7878
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7878.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_d7878.dir/CheckFunctionExists.c.o -o cmTC_d7878  -lpthreads 
 /usr/bin/ld: 找不到 -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_bb9ab.dir/build.make:99：cmTC_bb9ab] 错误 1
+make[1]: *** [CMakeFiles/cmTC_d7878.dir/build.make:99：cmTC_d7878] 错误 1
 make[1]: 离开目录“/home/ljj/Nav_USV_ws/build/CMakeFiles/CMakeTmp”
-make: *** [Makefile:127：cmTC_bb9ab/fast] 错误 2
+make: *** [Makefile:127：cmTC_d7878/fast] 错误 2
 
 
 
