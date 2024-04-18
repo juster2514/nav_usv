@@ -9,19 +9,19 @@ initaccbias: [ 0, 0, 0]
 initgyrscale: [ 0, 0, 0]
 initaccscale: [ 0, 0, 0]
 
-initposstd: [ 0.0, 0.0, 0.0]
-initvelstd: [ 0.0, 0.0, 0.0]
-initattstd: [ 0.0, 0.0, 0.0]
+initposstd: [ 0.05, 0.05, 0.05]
+initvelstd: [ 0.01, 0.01, 0.01]
+initattstd: [ 0.5, 0.5, 1.0]
 
 imunoise:
-  arw: [0.24, 0.24, 0.24]          # [deg/sqrt(hr)]
-  vrw: [0.24, 0.24, 0.24]          # [m/s/sqrt(hr)]
-  gbstd: [50.0, 50.0, 50.0]        # [deg/hr]
-  abstd: [250.0, 250.0, 250.0]     # [mGal]
+  arw: [0.012, 0.012, 0.132]          # [deg/sqrt(hr)]
+  vrw: [0.038, 0.040, 0.093]          # [m/s/sqrt(hr)]
+  gbstd: [0.1, 0.1, 0.411]        # [deg/hr]
+  abstd: [12.0, 13.0, 39.0]     # [mGal]
   gsstd: [1000.0, 1000.0, 1000.0]  # [ppm]
   asstd: [1000.0, 1000.0, 1000.0]  # [ppm]
   corrtime: 1.0                    # [hr]
 
 gnssstd: [ 0.0, 0.0, 0.0]
 
-antlever: [ 0.0, 0.0, 0.0]
+antlever: [ 0.0, 6.7, 0.0]
