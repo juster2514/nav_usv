@@ -23,18 +23,28 @@ EKFImuGnss::EKFImuGnss(EKFOption &options):nh_("~"){
     kf_.Qc_.block(SGSTD_ID,SGSTD_ID,3,3) = 2 / imunoise.corr_time * imunoise.gyrscale_std.cwiseProduct(imunoise.gyrscale_std).asDiagonal();
     kf_.Qc_.block(SASTD_ID,SASTD_ID,3,3) = 2 / imunoise.corr_time * imunoise.accscale_std.cwiseProduct(imunoise.accscale_std).asDiagonal();
 
+    llh_pre.reserve(3);
+    xyz_pre.reserve(3);
+    llh_pre[0]=options_.initstate.pos[0]*R2D;
+    llh_pre[1]=options_.initstate.pos[1]*R2D;
+    llh_pre[2]=options_.initstate.pos[2];
+
+    inittime_flag = false;
+    
     InitEKFImuGnss(options_.initstate, options_.initstate_std);
+
+    pub_path_ =  nh_.advertise<nav_msgs::Path>("nav_path_show",100);
+    run_status_ = nh_.advertise<nav_core::pos_vel_att_msg>("run_status_data",100);
 
     sub_imu_data_ = nh_.subscribe<sensor_msgs::Imu>("/imu_gps_node/imu_data",100,&EKFImuGnss::ImuCallback,this);
     sub_gps_data_ = nh_.subscribe<sensor_msgs::NavSatFix>("/imu_gps_node/gps_data",100,&EKFImuGnss::GpsCallback,this);
-    pub_path_ =  nh_.advertise<nav_msgs::Path>("nav_path_show",100);
-    run_status_ = nh_.advertise<nav_core::pos_vel_att_msg>("run_status_data",100);
 }
 
 void EKFImuGnss::InitEKFImuGnss(const NavState &initstate, const NavState &initstate_std){
     pvacurrent_.pos       = initstate.pos;
     pvacurrent_.vel       = initstate.vel;
     pvacurrent_.att.Euler = initstate.euler;
+    printf("init__pva_att:%f\t%f\t%f\t\n",pvacurrent_.att.Euler[0],pvacurrent_.att.Euler[1],pvacurrent_.att.Euler[2]);
     pvacurrent_.att.Cbn   = Rotation::euler2matrix(pvacurrent_.att.Euler);
     pvacurrent_.att.Qbn   = Rotation::euler2quaternion(pvacurrent_.att.Euler);
 
@@ -56,24 +66,67 @@ void EKFImuGnss::InitEKFImuGnss(const NavState &initstate, const NavState &inits
 }
 
 void EKFImuGnss::ImuCallback(const sensor_msgs::ImuConstPtr &imu_msg){
-
     IMU imu_temp;
-    imu_temp.time = imu_msg->header.stamp.toSec();
-    imu_temp.dt = imu_temp.time-timestamp_;
-    timestamp_ = imu_temp.time;
+    double gravity = Earth::gravity(pvacurrent_.pos);
+    if (inittime_flag)
+    {
+        imu_temp.time = imu_msg->header.stamp.toSec();
+        imu_temp.dt = imu_temp.time-timestamp_;
+        timestamp_ = imu_temp.time;
 
-    imu_temp.dangle[0] = imu_msg->angular_velocity.x * imu_temp.dt;
-    imu_temp.dangle[1] = imu_msg->angular_velocity.y * imu_temp.dt;
-    imu_temp.dangle[2] = imu_msg->angular_velocity.z * imu_temp.dt;
+        temp_cur.dacc[0] = imu_msg->angular_velocity.y;
+        temp_cur.dacc[1] = imu_msg->angular_velocity.x;
+        temp_cur.dacc[2] = imu_msg->angular_velocity.z;
 
-    imu_temp.dvel[0] = imu_msg->linear_acceleration.x *imu_temp.dt;
-    imu_temp.dvel[1] = imu_msg->linear_acceleration.y *imu_temp.dt; 
-    imu_temp.dvel[2] = imu_msg->linear_acceleration.z *imu_temp.dt; 
+        temp_cur.dvcc[0] = imu_msg->linear_acceleration.y;
+        temp_cur.dvcc[1] = imu_msg->linear_acceleration.x;
+        temp_cur.dvcc[2] = imu_msg->linear_acceleration.z;
 
-    addImuData(imu_temp,true);
 
-    newImuProcess();
+        imu_temp.dangle[0] = (temp_pre.dacc[0] + temp_cur.dacc[0]) * imu_temp.dt *0.5;
+        imu_temp.dangle[1] = (temp_pre.dacc[1] + temp_cur.dacc[1]) * imu_temp.dt *0.5;
+        imu_temp.dangle[2] = -(temp_pre.dacc[2] + temp_pre.dacc[2]) * imu_temp.dt *0.5;
 
+        imu_temp.dvel[0] = (temp_pre.dvcc[0] + temp_cur.dvcc[0]) * imu_temp.dt *0.5;
+        imu_temp.dvel[1] = (temp_pre.dvcc[1] + temp_cur.dvcc[1]) * imu_temp.dt *0.5;  
+        imu_temp.dvel[2] = -(temp_pre.dvcc[2] + temp_cur.dvcc[2]) * imu_temp.dt *0.5; 
+
+        temp_pre=temp_cur;
+
+        printf("dvel_x:%f\n",imu_temp.dvel[0]);
+        printf("dvel_y:%f\n",imu_temp.dvel[1]);
+        printf("dvel_z:%f\n",imu_temp.dvel[2]);
+
+
+        addImuData(imu_temp,false);
+
+        newImuProcess();
+    }
+    else if(!inittime_flag)
+    {
+        timestamp_=imu_msg->header.stamp.toSec();
+        imu_temp.time = imu_msg->header.stamp.toSec();
+
+        temp_pre.dacc[0] = 0;
+        temp_pre.dacc[1] = 0;
+        temp_pre.dacc[2] = 0;
+
+        temp_pre.dvcc[0] = 0;
+        temp_pre.dvcc[1] = 0;
+        temp_pre.dvcc[2] = 0;
+
+        imu_temp.dangle[0] = 0;
+        imu_temp.dangle[1] = 0;
+        imu_temp.dangle[2] = 0;
+
+        imu_temp.dvel[0] = 0;
+        imu_temp.dvel[1] = 0; 
+        imu_temp.dvel[2] = 0; 
+
+        imuprediction_ = imu_temp;
+        imucurrent_ = imu_temp;
+        inittime_flag=true;
+    }
 }
 
 void EKFImuGnss::GpsCallback(const sensor_msgs::NavSatFixConstPtr &gps_msg){
@@ -93,7 +146,7 @@ void EKFImuGnss::addImuData(const IMU &imu, bool compensate = false){
     imucurrent_ = imu;
 
     if (compensate) {
-        ImuCompensate(imucurrent_);
+        ImuCompensate(imuprediction_);
     }
 }
 
@@ -185,21 +238,75 @@ void EKFImuGnss::ImuPropagation(IMU &imuprediction, IMU &imucurrent){
     Phi.resizeLike(kf_.Cov_);
     F.resizeLike(kf_.Cov_);
     Qd.resizeLike(kf_.Cov_);
+    G.resize(RANK, NOISERANK);
     Phi.setIdentity();
     F.setZero();
     Qd.setZero();
     G.setZero();
 
+    Eigen::Vector2d rmrn;
+    Eigen::Vector3d wie_n, wen_n;
+    Eigen::Matrix3d temp;
     Eigen::Vector3d accel, omega;
+    double rmh, rnh;
+    double gravity;
+
+    rmrn    = Earth::meridianPrimeVerticalRadius(pvaprediction_.pos[0]);
+    rmh   = rmrn[0] + pvaprediction_.pos[2];
+    rnh   = rmrn[1] + pvaprediction_.pos[2];
+    gravity = Earth::gravity(pvaprediction_.pos);
     accel = imucurrent.dvel / imucurrent.dt;
     omega = imucurrent.dangle / imucurrent.dt;
 
+    // 位置误差
+    temp.setZero();
+    temp(0, 0)                = -pvaprediction_.vel[2] / rmh;
+    temp(0, 2)                = pvaprediction_.vel[0] / rmh;
+    temp(1, 0)                = pvaprediction_.vel[1] * tan(pvaprediction_.pos[0]) / rnh;
+    temp(1, 1)                = -(pvaprediction_.vel[2] + pvaprediction_.vel[0] * tan(pvaprediction_.pos[0])) / rnh;
+    temp(1, 2)                = pvaprediction_.vel[1] / rnh;
+    F.block(P_ID,P_ID,3,3)    = temp;
     F.block(P_ID,V_ID,3,3)    = Eigen::Matrix3d::Identity();
 
+    // 速度误差
+    temp.setZero();
+    temp(0, 0) = -2 * pvaprediction_.vel[1] * WGS84_WIE * cos(pvaprediction_.pos[0]) / rmh -
+                 pow(pvaprediction_.vel[1], 2) / rmh / rnh / pow(cos(pvaprediction_.pos[0]), 2);
+    temp(0, 2) = pvaprediction_.vel[0] * pvaprediction_.vel[2] / rmh / rmh - pow(pvaprediction_.vel[1], 2) * tan(pvaprediction_.pos[0]) / rnh / rnh;
+    temp(1, 0) = 2 * WGS84_WIE * (pvaprediction_.vel[0] * cos(pvaprediction_.pos[0]) - pvaprediction_.vel[2] * sin(pvaprediction_.pos[0])) / rmh +
+                 pvaprediction_.vel[0] * pvaprediction_.vel[1] / rmh / rnh / pow(cos(pvaprediction_.pos[0]), 2);
+    temp(1, 2) = (pvaprediction_.vel[1] * pvaprediction_.vel[2] + pvaprediction_.vel[0] * pvaprediction_.vel[1] * tan(pvaprediction_.pos[0])) / rnh / rnh;
+    temp(2, 0) = 2 * WGS84_WIE * pvaprediction_.vel[1] * sin(pvaprediction_.pos[0]) / rmh;
+    temp(2, 2) = -pow(pvaprediction_.vel[1], 2) / rnh / rnh - pow(pvaprediction_.vel[0], 2) / rmh / rmh +
+                 2 * gravity / (sqrt(rmrn[0] * rmrn[1]) + pvaprediction_.pos[2]);
+    F.block(V_ID, P_ID, 3, 3) = temp;
+    temp.setZero();
+    temp(0, 0)                  = pvaprediction_.vel[2] / rmh;
+    temp(0, 1)                  = -2 * (WGS84_WIE * sin(pvaprediction_.pos[0]) + pvaprediction_.vel[1] * tan(pvaprediction_.pos[0]) / rnh);
+    temp(0, 2)                  = pvaprediction_.vel[0] / rmh;
+    temp(1, 0)                  = 2 * WGS84_WIE * sin(pvaprediction_.pos[0]) + pvaprediction_.vel[1] * tan(pvaprediction_.pos[0]) / rnh;
+    temp(1, 1)                  = (pvaprediction_.vel[2] + pvaprediction_.vel[0] * tan(pvaprediction_.pos[0])) / rnh;
+    temp(1, 2)                  = 2 * WGS84_WIE * cos(pvaprediction_.pos[0]) + pvaprediction_.vel[1] / rnh;
+    temp(2, 0)                  = -2 * pvaprediction_.vel[0] / rmh;
+    temp(2, 1)                  = -2 * (WGS84_WIE * cos(pvaprediction_.pos(0)) + pvaprediction_.vel[1] / rnh);
+    F.block(V_ID, V_ID, 3, 3)   = temp;
     F.block(V_ID,ATT_ID,3,3)  = Rotation::skewSymmetric(pvaprediction_.att.Cbn*accel);
     F.block(V_ID,BA_ID,3,3)   = pvaprediction_.att.Cbn;
     F.block(V_ID,SA_ID,3,3)   = pvaprediction_.att.Cbn * (accel.asDiagonal());
 
+    // 姿态误差
+    temp.setZero();
+    temp(0, 0) = -WGS84_WIE * sin(pvaprediction_.pos[0]) / rmh;
+    temp(0, 2) = pvaprediction_.vel[1] / rnh / rnh;
+    temp(1, 2) = -pvaprediction_.vel[0] / rmh / rmh;
+    temp(2, 0) = -WGS84_WIE * cos(pvaprediction_.pos[0]) / rmh - pvaprediction_.vel[1] / rmh / rnh / pow(cos(pvaprediction_.pos[0]), 2);
+    temp(2, 2) = -pvaprediction_.vel[1] * tan(pvaprediction_.pos[0]) / rnh / rnh;
+    F.block(ATT_ID, P_ID, 3, 3) = temp;
+    temp.setZero();
+    temp(0, 1)                    = 1 / rnh;
+    temp(1, 0)                    = -1 / rmh;
+    temp(2, 1)                    = -tan(pvaprediction_.pos[0]) / rnh;
+    F.block(ATT_ID, V_ID, 3, 3)   = temp;
     F.block(ATT_ID,BG_ID,3,3) = -pvaprediction_.att.Cbn;
     F.block(ATT_ID,SG_ID,3,3) = -pvaprediction_.att.Cbn * (omega.asDiagonal());
 
@@ -227,11 +334,15 @@ void EKFImuGnss::ImuPropagation(IMU &imuprediction, IMU &imucurrent){
 
 void EKFImuGnss::GnssUpdate(GNSS &gnssdate){
     Eigen::Vector3d antenna_pos;
+    Eigen::Matrix3d Dr, Dr_inv;
 
-    antenna_pos = pvacurrent_.pos + pvacurrent_.att.Cbn * options_.antlever ;
+    Dr_inv      = Earth::DRi(pvacurrent_.pos);
+    Dr          = Earth::DR(pvacurrent_.pos);
+
+    antenna_pos = pvacurrent_.pos + Dr_inv * pvacurrent_.att.Cbn * options_.antlever ;
 
     Eigen::MatrixXd dz;
-    dz = antenna_pos - gnssdate.llh;
+    dz = Dr * antenna_pos - gnssdate.llh;
 
     Eigen::MatrixXd H_gnsspos;
 
@@ -276,10 +387,10 @@ void EKFImuGnss::EKFUpdate(Eigen::MatrixXd &dz, Eigen::MatrixXd &H, Eigen::Matri
 }
 
 void EKFImuGnss::PosAtt2Path(){
-    std::vector<double> llh,xyz;
+    std::vector<double> llh(3),xyz(3);
 
-    llh[0] = pvacurrent_.pos[0]; //pos顺序纬度经度-lat lon height
-    llh[1] = pvacurrent_.pos[1];
+    llh[0] = pvacurrent_.pos[0]*R2D; //pos顺序纬度经度-lat lon height
+    llh[1] = pvacurrent_.pos[1]*R2D;
     llh[2] = pvacurrent_.pos[2];
 
     LLA2XYZ(llh,xyz);
@@ -302,7 +413,7 @@ void EKFImuGnss::PosAtt2Path(){
     run_statue_msg.vel.x = pvacurrent_.vel[0];
     run_statue_msg.vel.y = pvacurrent_.vel[1];
     run_statue_msg.vel.z = pvacurrent_.vel[2];
-
+    
     path_msg.poses.push_back(pos_msg);
     path_msg.header.stamp = ros::Time::now();
     path_msg.header.frame_id = "map";
@@ -315,8 +426,8 @@ void EKFImuGnss::PosAtt2Path(){
 
 void EKFImuGnss::LLA2XYZ(std::vector<double> &llh,std::vector<double> &xyz)
 {
-    double lat = llh[0] * D2R;      
-    double lon = llh[1]* D2R;
+    double lat = llh[0];      
+    double lon = llh[1];
     double hei = llh[2];
 
     double a = WGS84_RA;     
@@ -355,6 +466,11 @@ void EKFImuGnss::StateFeedback(){
     pvacurrent_.att.Qbn = Qpn * pvacurrent_.att.Qbn;
     pvacurrent_.att.Cbn = Rotation::quaternion2matrix(pvacurrent_.att.Qbn);
     pvacurrent_.att.Euler = Rotation::matrix2euler(pvacurrent_.att.Cbn); 
+
+    temp = kf_.dx_.block(BG_ID, 0, 3, 1);
+    imuerror_.gyrbias += temp;
+    temp = kf_.dx_.block(BA_ID, 0, 3, 1);
+    imuerror_.accbias += temp;
 
     temp = kf_.dx_.block(SG_ID,0,3,1);
     imuerror_.gyrscale +=temp;

@@ -28,13 +28,16 @@ void NavUSVcontrol::RemoteCallback(const nav_core::remote_control_msg::ConstPtr 
 }
 
 void NavUSVcontrol::SbusRemoteOutput(){
-    power = 1000+(power-200)*0.625;
-    direction = 1-(direction-200)*0.00125;
+    int16_t power_;
+    double direction_;
+    
+    power_ = 1000+(power-200)*0.625;
+    direction_ = 1-(direction-200)*0.00125;
     K = 100 + (steering_ratio -200)*0.25;
 
-    ch1 = power + K*direction;
+    ch1 = power_ + K*direction_;
     CheckChvalue(ch1);
-    ch2 = power + K*direction;
+    ch2 = power_ + K*direction_;
     CheckChvalue(ch2);
 
     sbus_output_data.channels_value[0]=ch1;

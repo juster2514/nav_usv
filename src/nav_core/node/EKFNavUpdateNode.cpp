@@ -27,9 +27,9 @@ void loadConfig(YAML::Node &config,EKFOption &options){
     vec3 = config["initatt"].as<std::vector<double>>();
 
     for (int i = 0; i < 3; i++) {
-        options.initstate.pos[i]   = vec1[i] * D2R;
+        options.initstate.pos[i]   = vec1[i]*D2R;
         options.initstate.vel[i]   = vec2[i];
-        options.initstate.euler[i] = vec3[i] * D2R;
+        options.initstate.euler[i] = vec3[i]*D2R;
     }
     options.initstate.pos[2] *= R2D;
 

@@ -67,6 +67,12 @@ typedef struct IMU
 
 } IMU;
 
+typedef struct temp_IMU
+{
+    Eigen::Vector3d dacc;
+    Eigen::Vector3d dvcc;
+} temp_IMU;
+
 typedef struct GNSS
 {
     double time;

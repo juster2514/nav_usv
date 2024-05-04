@@ -12,6 +12,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories(${CMAKE_INSTALL_PREFIX}/include)
 link_directories(${CMAKE_INSTALL_PREFIX}/bin)
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g ")
+set (CMAKE_VERBOSE_MAKEFILE ON )
+
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy

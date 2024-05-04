@@ -44,6 +44,8 @@ class ImuGpsReceiveSerial{
 
     std::shared_ptr<serial::Serial> imu_gps_ser_;
     std::shared_ptr<tf2::Quaternion> quat;
+    std::vector<uint8_t> buff;
+    uint8_t data_temp;
 };
 
 #endif

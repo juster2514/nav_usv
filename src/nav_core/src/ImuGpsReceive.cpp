@@ -25,6 +25,9 @@ ImuGpsReceiveSerial::ImuGpsReceiveSerial():nh_("~"){
 
     imu_data_ready.store(false);
     gps_data_ready.store(false);
+
+    imu_msg.header.frame_id = "imu_data"; 
+    gps_msg.header.frame_id = "gps_data";
  
     imu_analysis_value_ =nh_.advertise<sensor_msgs::Imu>("imu_data", 100);
     gps_anglysis_value_ = nh_.advertise<sensor_msgs::NavSatFix>("gps_data",100);
@@ -64,7 +67,7 @@ void ImuGpsReceiveSerial::ImuGpsThread(){
 bool ImuGpsReceiveSerial::InitImuGpsReceiveSerialPort
     (const std::string port_name) const {
     imu_gps_ser_->setPort(port_name);
-    imu_gps_ser_->setBaudrate(9600);
+    imu_gps_ser_->setBaudrate(115200);
     serial::Timeout time_out =serial::Timeout::simpleTimeout(2000);
     imu_gps_ser_->setTimeout(time_out);
     imu_gps_ser_->open();
@@ -85,20 +88,15 @@ bool ImuGpsReceiveSerial::InitImuGpsReceiveSerialPort
 *输出：无
 */
 void ImuGpsReceiveSerial::ImuGpsRead(){
-    imu_msg.header.frame_id = "imu_data"; 
-    gps_msg.header.frame_id = "gps_data";
-    std::vector<uint8_t> buff;
+
     if (imu_gps_ser_->available()){
-        uint8_t data;
         while (!imu_data_ready.load()&&!gps_data_ready.load())
         {
-            imu_gps_ser_->read(&data,1);
-            buff.push_back(data);
+            imu_gps_ser_->read(&data_temp,1);
+            buff.push_back(data_temp);
             if (buff.size() >=11 && buff[0] ==0x55){
                 std::vector<uint8_t> initial_value(buff.begin(), buff.begin() + 11);
                 std::vector<uint8_t> data(buff.begin() + 2, buff.begin() + 10);
-                bool imu_final_flag = false;
-                bool gps_final_flag = false;
                 if (initial_value[1]==0x51)
                 {
                     if (checkSum(initial_value))
@@ -122,7 +120,7 @@ void ImuGpsReceiveSerial::ImuGpsRead(){
                     if (checkSum(initial_value))
                     {
                         angle_degree = hexToShort(data);
-                        imu_final_flag = true;
+                        imu_data_ready.store(true);
                     }else{
                         ROS_INFO("Ox53 check error");
                     }
@@ -141,21 +139,12 @@ void ImuGpsReceiveSerial::ImuGpsRead(){
                     if (checkSum(initial_value))
                     {
                         gps_data = hexToShort(data);
-                        gps_final_flag = true;
+                        gps_data_ready.store(true);
                     }else{
                         ROS_INFO("Ox58 check error");
                     }
                 }
                 buff.clear();
-                if (imu_final_flag)
-                {
-                    imu_data_ready.store(true);
-                }
-                else if (gps_final_flag)
-                {
-                    gps_data_ready.store(true);
-                }
-                
             }else if (buff[0] != 0x55){
             buff.clear();  
             }
@@ -186,9 +175,11 @@ void ImuGpsReceiveSerial::ImuGpsRead(){
         }
         else if (gps_data_ready.load())
         {
-            gps_msg.longitude= static_cast<double>((lon_lat[0])/10000000+(((lon_lat[0])%10000000)/100000)/60.0);
-            gps_msg.latitude = static_cast<double>((lon_lat[1])/10000000+(((lon_lat[0])%10000000)/100000)/60.0);
-            gps_msg.altitude = static_cast<double>(gps_data[0]) / 10;
+            gps_msg.longitude= static_cast<int>((lon_lat[0])/10000000.0)+((((lon_lat[0])%10000000)/100000.0)/60.0);
+
+            gps_msg.latitude = static_cast<int>(((lon_lat[1])/10000000.0))+((((lon_lat[1])%10000000)/100000.0)/60.0);
+
+            gps_msg.altitude = static_cast<double>(gps_data[0]) / 10.0;
 
             gps_msg.header.stamp=ros::Time::now();
         }

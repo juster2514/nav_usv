@@ -78,9 +78,10 @@ class EKFImuGnss{
     const int NOISERANK =18;
 
     double timestamp_;
-    const double TIME_ALIGN_ERR = 0.005;
+    bool inittime_flag;
+    const double TIME_ALIGN_ERR = 0.002;
     std::vector<double> llh_pre,xyz_pre;
-
+    temp_IMU temp_pre,temp_cur;
 
     enum StateID {P_ID=0,V_ID=3,ATT_ID=6,BG_ID=9,BA_ID=12,SG_ID=15,SA_ID=18};
     enum NoiseID {VRW_ID=0,ARW_ID=3,BGSTD_ID=6,BASTD_ID=9,SGSTD_ID=12,SASTD_ID=15};
