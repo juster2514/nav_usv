@@ -1,2 +1,0 @@
-nav_core
--DCATKIN_DEVEL_PREFIX=/home/ljj/Nav_USV_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ljj/Nav_USV_ws/install -G Unix Makefiles
