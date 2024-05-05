@@ -25,8 +25,8 @@ EKFImuGnss::EKFImuGnss(EKFOption &options):nh_("~"){
 
     llh_pre.reserve(3);
     xyz_pre.reserve(3);
-    llh_pre[0]=options_.initstate.pos[0]*R2D;
-    llh_pre[1]=options_.initstate.pos[1]*R2D;
+    llh_pre[0]=options_.initstate.pos[0];
+    llh_pre[1]=options_.initstate.pos[1];
     llh_pre[2]=options_.initstate.pos[2];
 
     inittime_flag = false;
@@ -44,6 +44,7 @@ void EKFImuGnss::InitEKFImuGnss(const NavState &initstate, const NavState &inits
     pvacurrent_.pos       = initstate.pos;
     pvacurrent_.vel       = initstate.vel;
     pvacurrent_.att.Euler = initstate.euler;
+    printf("init__pva_pos:%f\t%f\t%f\t\n",pvacurrent_.pos[0],pvacurrent_.pos[1],pvacurrent_.pos[2]);
     printf("init__pva_att:%f\t%f\t%f\t\n",pvacurrent_.att.Euler[0],pvacurrent_.att.Euler[1],pvacurrent_.att.Euler[2]);
     pvacurrent_.att.Cbn   = Rotation::euler2matrix(pvacurrent_.att.Euler);
     pvacurrent_.att.Qbn   = Rotation::euler2quaternion(pvacurrent_.att.Euler);
@@ -98,7 +99,7 @@ void EKFImuGnss::ImuCallback(const sensor_msgs::ImuConstPtr &imu_msg){
         printf("dvel_z:%f\n",imu_temp.dvel[2]);
 
 
-        addImuData(imu_temp,false);
+        addImuData(imu_temp,true);
 
         newImuProcess();
     }
@@ -134,9 +135,11 @@ void EKFImuGnss::GpsCallback(const sensor_msgs::NavSatFixConstPtr &gps_msg){
     GNSS gnss_temp;
     gnss_temp.time = gps_msg->header.stamp.toSec();
 
-    gnss_temp.llh[0] = gps_msg->latitude;
-    gnss_temp.llh[1] = gps_msg->longitude;
+    gnss_temp.llh[0] = gps_msg->latitude*D2R;
+    gnss_temp.llh[1] = gps_msg->longitude*D2R;
     gnss_temp.llh[2] = gps_msg->altitude;
+
+    gnss_temp.std << 0.0,0.0,0.0;
 
     addGnssData(gnss_temp);
 }
@@ -342,7 +345,7 @@ void EKFImuGnss::GnssUpdate(GNSS &gnssdate){
     antenna_pos = pvacurrent_.pos + Dr_inv * pvacurrent_.att.Cbn * options_.antlever ;
 
     Eigen::MatrixXd dz;
-    dz = Dr * antenna_pos - gnssdate.llh;
+    dz = Dr * (antenna_pos - gnssdate.llh);
 
     Eigen::MatrixXd H_gnsspos;
 
@@ -389,8 +392,8 @@ void EKFImuGnss::EKFUpdate(Eigen::MatrixXd &dz, Eigen::MatrixXd &H, Eigen::Matri
 void EKFImuGnss::PosAtt2Path(){
     std::vector<double> llh(3),xyz(3);
 
-    llh[0] = pvacurrent_.pos[0]*R2D; //pos顺序纬度经度-lat lon height
-    llh[1] = pvacurrent_.pos[1]*R2D;
+    llh[0] = pvacurrent_.pos[0]; //pos顺序纬度经度-lat lon height
+    llh[1] = pvacurrent_.pos[1];
     llh[2] = pvacurrent_.pos[2];
 
     LLA2XYZ(llh,xyz);

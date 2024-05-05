@@ -6,5 +6,5 @@ CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_WIDGETS_LIB -D
 
 CXX_INCLUDES = -I/home/ljj/Nav_USV_ws/build/nav_core -I/home/ljj/Nav_USV_ws/src/nav_core -I/home/ljj/Nav_USV_ws/build/nav_core/sbus_simulate_node_autogen/include -I/home/ljj/Nav_USV_ws/devel/include -I/home/ljj/Nav_USV_ws/install/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/home/ljj/Nav_USV_ws/src/nav_core/./include -I/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp/../../../../../include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtSerialPort
 
-CXX_FLAGS =  -g  -g -fPIC -std=gnu++17
+CXX_FLAGS = -g -fPIC -std=gnu++17
 

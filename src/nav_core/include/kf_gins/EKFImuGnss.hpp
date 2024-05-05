@@ -79,7 +79,7 @@ class EKFImuGnss{
 
     double timestamp_;
     bool inittime_flag;
-    const double TIME_ALIGN_ERR = 0.002;
+    const double TIME_ALIGN_ERR = 0.012;
     std::vector<double> llh_pre,xyz_pre;
     temp_IMU temp_pre,temp_cur;
 

@@ -3,6 +3,7 @@
 *描述：通过串口获取IMU和GPS的原始数据并进行解析
 ***************************/
 #include "nav_core/ImuGpsReceive.hpp"
+#include <cmath>
 
 /*
 *描述：类ImuGpsReceiveSerial构造函数
@@ -176,8 +177,10 @@ void ImuGpsReceiveSerial::ImuGpsRead(){
         else if (gps_data_ready.load())
         {
             gps_msg.longitude= static_cast<int>((lon_lat[0])/10000000.0)+((((lon_lat[0])%10000000)/100000.0)/60.0);
+            gps_msg.longitude= std::round(gps_msg.longitude * 10000000)/10000000;
 
             gps_msg.latitude = static_cast<int>(((lon_lat[1])/10000000.0))+((((lon_lat[1])%10000000)/100000.0)/60.0);
+            gps_msg.latitude= std::round(gps_msg.latitude * 10000000)/10000000;
 
             gps_msg.altitude = static_cast<double>(gps_data[0]) / 10.0;
 
