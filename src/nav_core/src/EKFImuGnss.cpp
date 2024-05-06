@@ -391,6 +391,7 @@ void EKFImuGnss::EKFUpdate(Eigen::MatrixXd &dz, Eigen::MatrixXd &H, Eigen::Matri
 
 void EKFImuGnss::PosAtt2Path(){
     std::vector<double> llh(3),xyz(3);
+    double temp;
 
     llh[0] = pvacurrent_.pos[0]; //pos顺序纬度经度-lat lon height
     llh[1] = pvacurrent_.pos[1];
@@ -398,13 +399,18 @@ void EKFImuGnss::PosAtt2Path(){
 
     LLA2XYZ(llh,xyz);
 
-    pos_msg.pose.position.x = xyz[0]-xyz_pre[0];
-    pos_msg.pose.position.y = xyz[1]-xyz_pre[1];
-    pos_msg.pose.position.z = xyz[2]-xyz_pre[2];
+    xyz[0] = xyz[0]-xyz_pre[0];
+    xyz[1] = xyz[1]-xyz_pre[1];
+    xyz[2] = xyz[2]-xyz_pre[2];
+    temp = -cos(llh[1])*xyz[0] - sin(llh[1])*xyz[1];
 
-    run_statue_msg.pos.pose.position.x = xyz[0]-xyz_pre[0]; 
-    run_statue_msg.pos.pose.position.y = xyz[1]-xyz_pre[1]; 
-    run_statue_msg.pos.pose.position.z = xyz[2]-xyz_pre[2]; 
+    pos_msg.pose.position.x = -sin(llh[1])*xyz[0] + cos(llh[1])*xyz[1];
+    pos_msg.pose.position.y = temp*sin(llh[0]) + cos(llh[0])*xyz[2];
+    pos_msg.pose.position.z = cos(llh[0])*cos(llh[1])*xyz[0] + cos(llh[0])*sin(llh[1])*xyz[1] + sin(llh[0])*xyz[2];
+
+    run_statue_msg.pos.pose.position.x = -sin(llh[1])*xyz[0] + cos(llh[1]*xyz[1]); 
+    run_statue_msg.pos.pose.position.y = temp*sin(llh[0]) + cos(llh[0])*xyz[2]; 
+    run_statue_msg.pos.pose.position.z = cos(llh[0])*cos(llh[1])*xyz[0] + cos(llh[0])*sin(llh[1])*xyz[1] + sin(llh[0])*xyz[2]; 
 
     pos_msg.pose.orientation.w = pvacurrent_.att.Qbn.w();
     pos_msg.pose.orientation.x = pvacurrent_.att.Qbn.x();
